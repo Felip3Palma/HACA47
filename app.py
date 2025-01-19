@@ -10,6 +10,10 @@ with open('simples.json', 'r', encoding='utf-8') as file:
 
 # Função para interagir com o Ollama
 def perguntar_ollama(pergunta):
+    """ Envia uma pergunta ao Ollama e retorna a resposta.
+    Parâmetros: pergunta (str): A pergunta a ser enviada ao Ollama. 
+    Retorna: str: A resposta do Ollama ou uma mensagem de erro. """
+    
     try:
         # Envia a pergunta ao Ollama usando `ollama run`
         result = subprocess.run(
@@ -25,6 +29,9 @@ def perguntar_ollama(pergunta):
 
 @app.route('/avaliar', methods=['GET'])
 def avaliar_respostas():
+    """ Endpoint para avaliar respostas geradas pelo Ollama.
+    Retorna: json: Uma lista de resultados contendo a pergunta, a resposta gerada pelo ollama, 
+    a resposta correta e  verificar se a resposta está correta. """
     resultados = []
 
     for idx, pergunta in enumerate(perguntas):
